@@ -1,5 +1,7 @@
 # Optimization matrix multiplication via parallelization
 
+![image](https://user-images.githubusercontent.com/49230518/135718235-05e55a1a-5627-47c1-ba57-06f49cd29192.png)
+
 ### Compile
 ```
 gcc matmul_omp.c -O3 -o test_omp -fopenmp -lpthread
