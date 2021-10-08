@@ -1,5 +1,5 @@
-#ifndef MATRIX_MATMUL_MATRIX_H
-#define MATRIX_MATMUL_MATRIX_H
+#ifndef MATRIX_MULTIPLICATION_MATRIX_H
+#define MATRIX_MULTIPLICATION_MATRIX_H
 
 #include <cassert>
 #include <iostream>
