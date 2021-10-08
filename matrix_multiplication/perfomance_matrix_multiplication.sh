@@ -1,11 +1,12 @@
-#!/bin/zsh
+#!/bin/bash
 
-for flag in '-O3' '-g'
+for optimization_flag in '-g' '-O3'
 do
-  make FLAG=$flag
-  for n in 512 1024 2048 4096
+  echo "Optimization flag : $optimization_flag"
+  make OPTIMIZE=$optimization_flag
+  for matrix_size in 512 1024 2048 4096
   do
-    ./matmul $n
-    ./matmul $n strassen
+    ./matrix_multiplication $matrix_size
+    ./matrix_multiplication $matrix_size strassen
   done
 done

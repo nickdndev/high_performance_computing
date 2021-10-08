@@ -1,7 +1,7 @@
 #ifndef MATRIX_MATMUL_MATRIX_H
 #define MATRIX_MATMUL_MATRIX_H
 
-#include "assert.h"
+#include <cassert>
 #include <iostream>
 #include <vector>
 
@@ -28,4 +28,4 @@ public:
   size_t columns;
 };
 
-#endif // MATRIX_MATMUL_MATRIX_H
+#endif
