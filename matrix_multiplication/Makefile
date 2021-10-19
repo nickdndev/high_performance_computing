@@ -11,7 +11,7 @@ EXECUTABLE=matrix_multiplication
 all: matrix
 
 matrix:
-	$(CC) $(OPTIMIZE) $(CFLAGS) $(SOURCES)$
+	$(CC) $(OPTIMIZE) $(CFLAGS) $(SOURCES)
 	ar rc $(STATIC_LIB) $(OBJECTS)
 	$(CC) -std=$(STD) $(MAIN) $(STATIC_LIB) -o $(EXECUTABLE)
 	rm *.o *.a
