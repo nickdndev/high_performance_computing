@@ -52,10 +52,10 @@ void pow_matrix(int *matrix, int N, int power) {
       tmp_matrix[i * N + j] = matrix[i * N + j];
 
   for (int i = 0; i < p2; ++i)
-    matmul(&matrix[0], &matrix[0], &matrix[0], N);
+    matmul(matrix, matrix, matrix, N);
 
   for (int i = 0; i < (power - k2); ++i)
-    matmul(&tmp_matrix[0], &matrix[0], &matrix[0], N);
+    matmul(tmp_matrix, matrix, matrix, N);
 }
 
 void fill_random_graph(int *matrix, int N, int seed) {
