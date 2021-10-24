@@ -4,18 +4,21 @@
 
 void matmul(const int *matrix1, const int *matrix2, int *output, int N) {
   int tmp[N * N];
+
 #pragma omp parallel for shared(tmp, N) default(none)
-  for (size_t i = 0; i < N; ++i)
-    for (size_t j = 0; j < N; ++j)
+  for (int i = 0; i < N; ++i)
+    for (int j = 0; j < N; ++j)
       tmp[i * N + j] = 0;
+
 #pragma omp parallel for shared(tmp, N, matrix1, matrix2) default(none)
-  for (size_t i = 0; i < N; ++i)
-    for (size_t j = 0; j < N; ++j)
-      for (size_t k = 0; k < N; ++k)
+  for (int i = 0; i < N; ++i)
+    for (int j = 0; j < N; ++j)
+      for (int k = 0; k < N; ++k)
         tmp[i * N + j] += matrix1[i * N + k] * matrix2[k * N + j];
+
 #pragma omp parallel for shared(tmp, N, output) default(none)
-  for (size_t i = 0; i < N; ++i)
-    for (size_t j = 0; j < N; ++j)
+  for (int i = 0; i < N; ++i)
+    for (int j = 0; j < N; ++j)
       output[i * N + j] = tmp[i * N + j];
 }
 
