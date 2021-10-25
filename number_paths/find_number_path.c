@@ -21,8 +21,8 @@ void matmul(const int *matrix1, const int *matrix2, int *output, int N) {
     for (int j = 0; j < N; ++j)
       output[i * N + j] = tmp[i * N + j];
 }
-
-void pow2(int *p2, int *k2, const int k) {
+//docs https://e-maxx.ru/algo/binary_pow
+void binpow(int *p2, int *k2, const int k) {
   p2[0] = 0;
   k2[0] = 1;
 
@@ -44,7 +44,7 @@ void pow_matrix(int *matrix, int N, int power) {
   int k2 = 0, p2 = 0;
   int tmp_matrix[N * N];
 
-  pow2(&p2, &k2, power);
+  binpow(&p2, &k2, power);
 
 #pragma omp parallel for shared(matrix, N, tmp_matrix) default(none)
   for (int i = 0; i < N; ++i)
