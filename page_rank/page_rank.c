@@ -120,17 +120,18 @@ int main(int argc, char *argv[]) {
 
   generate_random_graph(input_matrix, N);
 
-  printf("\ngraph\n");
+  printf("Input graph\n");
   print_matrix(N, input_matrix);
   printf("\n");
 
   calculate_naive_rank(input_matrix, naive_ranks, N);
 
   pagerank(N, &input_matrix[0], &ranks[0], EPS);
-  printf("\npagerank ->\n");
+  printf("Pagerank ->\n");
   print_ranks(N, &ranks[0]);
+  printf("\n");
 
-  printf("\nnaive approach->\n");
+  printf("Naive approach->\n");
   print_ranks(N, &naive_ranks[0]);
   printf("\n");
 
