@@ -3,23 +3,23 @@
 #include <stdlib.h>
 
 void matmul(const int *matrix1, const int *matrix2, int *output, int N) {
-  int tmp[N * N];
+  int tmp_matrix[N * N];
 
-#pragma omp parallel for shared(tmp, N) default(none)
+#pragma omp parallel for shared(tmp_matrix, N) default(none)
   for (int i = 0; i < N; ++i)
     for (int j = 0; j < N; ++j)
-      tmp[i * N + j] = 0;
+      tmp_matrix[i * N + j] = 0;
 
-#pragma omp parallel for shared(tmp, N, matrix1, matrix2) default(none)
+#pragma omp parallel for shared(tmp_matrix, N, matrix1, matrix2) default(none)
   for (int i = 0; i < N; ++i)
     for (int j = 0; j < N; ++j)
       for (int k = 0; k < N; ++k)
-        tmp[i * N + j] += matrix1[i * N + k] * matrix2[k * N + j];
+        tmp_matrix[i * N + j] += matrix1[i * N + k] * matrix2[k * N + j];
 
-#pragma omp parallel for shared(tmp, N, output) default(none)
+#pragma omp parallel for shared(tmp_matrix, N, output) default(none)
   for (int i = 0; i < N; ++i)
     for (int j = 0; j < N; ++j)
-      output[i * N + j] = tmp[i * N + j];
+      output[i * N + j] = tmp_matrix[i * N + j];
 }
 //docs https://e-maxx.ru/algo/binary_pow
 void binpow(int *p2, int *k2, const int k) {
@@ -97,6 +97,7 @@ int main(int argc, char *argv[]) {
   pow_matrix(input_matrix, N, LENGTH_PATH);
 
   double end = omp_get_wtime();
+
   double execution_time = end - start;
 
   printf("Matrix ^ %d\n", LENGTH_PATH);
