@@ -7,7 +7,7 @@
 
 ```
 
- mpiexec -n 6 python task1.py
+mpiexec -n 6 python greeting_game.py 
 
 ```
  
